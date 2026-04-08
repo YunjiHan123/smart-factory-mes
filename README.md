@@ -12,4 +12,3 @@
 ```text
 frontend/   # Vue 프로젝트
 backend/    # Spring Boot 프로젝트
-docs/       # ERD, API 명세, 와이어프레임 등 문서
