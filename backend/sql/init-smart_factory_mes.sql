@@ -21,6 +21,19 @@ CREATE TABLE IF NOT EXISTS production_lines (
         CHECK (current_status IN ('RUN', 'STOP', 'IDLE', 'ERROR', 'MAINTENANCE'))
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS app_users (
+    user_id BIGINT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(120) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    display_name VARCHAR(100) NOT NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL,
+    CONSTRAINT pk_app_users PRIMARY KEY (user_id),
+    CONSTRAINT uk_app_users_username UNIQUE (username),
+    CONSTRAINT uk_app_users_email UNIQUE (email)
+) ENGINE=InnoDB;
+
 CREATE TABLE IF NOT EXISTS equipments (
     equipment_id BIGINT NOT NULL,
     line_id BIGINT NOT NULL,
