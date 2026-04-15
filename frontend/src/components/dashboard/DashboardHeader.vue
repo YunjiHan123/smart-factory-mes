@@ -9,23 +9,36 @@
     </div>
 
     <div class="dashboard-header__meta">
+      <div class="dashboard-header__user" v-if="user">
+        <p class="dashboard-header__welcome">{{ user.displayName }}</p>
+        <button type="button" class="dashboard-header__logout" @click="handleLogout">Logout</button>
+      </div>
       <div class="dashboard-header__clock">
         <p class="dashboard-header__time">{{ currentTime }}</p>
         <p class="dashboard-header__date">{{ currentDate }}</p>
       </div>
-      <button type="button" class="icon-button" @click="refreshTime">↻</button>
+      <button type="button" class="icon-button" aria-label="Refresh time" @click="refreshTime">R</button>
     </div>
   </header>
 </template>
 
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { getCurrentUser, logout } from '@/lib/auth'
 
+const router = useRouter()
 const now = ref(new Date())
+const user = ref(getCurrentUser())
 let timerId
 
 const refreshTime = () => {
   now.value = new Date()
+}
+
+const handleLogout = () => {
+  logout()
+  router.push('/login')
 }
 
 const currentTime = computed(() =>
