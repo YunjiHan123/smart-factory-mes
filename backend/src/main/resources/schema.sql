@@ -1,10 +1,3 @@
-DROP TABLE IF EXISTS app_users;
-DROP TABLE IF EXISTS alarm_histories;
-DROP TABLE IF EXISTS equipment_status_history;
-DROP TABLE IF EXISTS production_records;
-DROP TABLE IF EXISTS equipments;
-DROP TABLE IF EXISTS production_lines;
-
 CREATE TABLE IF NOT EXISTS app_users (
     user_id BIGINT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
@@ -18,7 +11,7 @@ CREATE TABLE IF NOT EXISTS app_users (
     CONSTRAINT uk_app_users_email UNIQUE (email)
 ) ENGINE=InnoDB;
 
-CREATE TABLE production_lines (
+CREATE TABLE IF NOT EXISTS production_lines (
     line_id BIGINT NOT NULL,
     line_code VARCHAR(50) NOT NULL,
     line_name VARCHAR(100) NOT NULL,
@@ -33,19 +26,6 @@ CREATE TABLE production_lines (
     CONSTRAINT uk_production_lines_line_code UNIQUE (line_code),
     CONSTRAINT chk_production_lines_status
         CHECK (current_status IN ('RUN', 'STOP', 'IDLE', 'ERROR', 'MAINTENANCE'))
-) ENGINE=InnoDB;
-
-CREATE TABLE IF NOT EXISTS app_users (
-    user_id BIGINT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(120) NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    display_name VARCHAR(100) NOT NULL,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    CONSTRAINT pk_app_users PRIMARY KEY (user_id),
-    CONSTRAINT uk_app_users_username UNIQUE (username),
-    CONSTRAINT uk_app_users_email UNIQUE (email)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS equipments (
@@ -72,7 +52,7 @@ CREATE TABLE IF NOT EXISTS equipments (
     INDEX idx_equipments_line_id_process_order (line_id, process_order, equipment_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE production_records (
+CREATE TABLE IF NOT EXISTS production_records (
     record_id BIGINT NOT NULL AUTO_INCREMENT,
     line_id BIGINT NOT NULL,
     equipment_id BIGINT NOT NULL,
@@ -96,7 +76,7 @@ CREATE TABLE production_records (
     INDEX idx_production_records_equipment_id_record_time (equipment_id, record_time)
 ) ENGINE=InnoDB;
 
-CREATE TABLE equipment_status_history (
+CREATE TABLE IF NOT EXISTS equipment_status_history (
     status_history_id BIGINT NOT NULL AUTO_INCREMENT,
     equipment_id BIGINT NOT NULL,
     status VARCHAR(30) NOT NULL,
@@ -114,7 +94,7 @@ CREATE TABLE equipment_status_history (
     INDEX idx_equipment_status_history_equipment_id_ended_at (equipment_id, ended_at)
 ) ENGINE=InnoDB;
 
-CREATE TABLE alarm_histories (
+CREATE TABLE IF NOT EXISTS alarm_histories (
     alarm_id BIGINT NOT NULL AUTO_INCREMENT,
     line_id BIGINT NOT NULL,
     equipment_id BIGINT NULL,
