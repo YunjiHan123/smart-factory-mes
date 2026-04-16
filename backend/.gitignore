@@ -35,3 +35,7 @@ build/
 ### Local config ###
 src/test/resources/application.properties
 .env
+
+### Postman local artifacts ###
+.postman/
+postman/

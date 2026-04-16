@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Smart Factory favicon">
+  <defs>
+    <linearGradient id="blue" x1="10" y1="18" x2="35" y2="43" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#63c8ff" />
+      <stop offset="0.58" stop-color="#3098e0" />
+      <stop offset="1" stop-color="#1f72be" />
+    </linearGradient>
+    <linearGradient id="green" x1="54" y1="18" x2="29" y2="43" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#89df79" />
+      <stop offset="0.58" stop-color="#58c168" />
+      <stop offset="1" stop-color="#359955" />
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path
+      d="M13 41
+         C8 36 8 28 13 23
+         C18 18 26 18 31 23
+         L39 31
+         L31.5 38.5
+         L23.5 30.5
+         C20.7 27.7 16.3 27.7 13.5 30.5
+         C10.7 33.3 10.7 37.7 13.5 40.5
+         C16.3 43.3 20.7 43.3 23.5 40.5
+         L40.5 23.5
+         C45.5 18.5 53.5 18.5 58.5 23.5"
+      stroke="url(#blue)"
+      stroke-width="10.5"
+    />
+    <path
+      d="M51 23
+         C56 28 56 36 51 41
+         C46 46 38 46 33 41
+         L25 33
+         L32.5 25.5
+         L40.5 33.5
+         C43.3 36.3 47.7 36.3 50.5 33.5
+         C53.3 30.7 53.3 26.3 50.5 23.5
+         C47.7 20.7 43.3 20.7 40.5 23.5
+         L23.5 40.5
+         C18.5 45.5 10.5 45.5 5.5 40.5"
+      stroke="url(#green)"
+      stroke-width="10.5"
+    />
+    <path d="M25.5 29.5L32.5 36.5" stroke="#ffffff" stroke-width="4.2" />
+    <path d="M31.5 27.5L38.5 34.5" stroke="#ffffff" stroke-width="4.2" />
+  </g>
+</svg>
