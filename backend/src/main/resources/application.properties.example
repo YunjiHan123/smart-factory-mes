@@ -23,4 +23,9 @@ mes.simulation.initial-delay-ms=${MES_SIMULATION_INITIAL_DELAY_MS:5000}
 mes.simulation.bootstrap-ticks=${MES_SIMULATION_BOOTSTRAP_TICKS:12}
 mes.simulation.dashboard-trend-hours=${MES_SIMULATION_DASHBOARD_TREND_HOURS:8}
 
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.api-docs.path=/v3/api-docs
+springdoc.default-produces-media-type=application/json
+springdoc.default-consumes-media-type=application/json
+
 server.port=${PORT:8080}
