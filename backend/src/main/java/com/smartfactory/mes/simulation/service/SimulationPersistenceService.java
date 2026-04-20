@@ -2,6 +2,7 @@ package com.smartfactory.mes.simulation.service;
 
 import com.smartfactory.mes.simulation.domain.Equipment;
 import com.smartfactory.mes.simulation.domain.EquipmentStatusHistory;
+import com.smartfactory.mes.simulation.domain.AlarmHistory;
 import com.smartfactory.mes.simulation.domain.ProductionLine;
 import com.smartfactory.mes.simulation.domain.ProductionRecord;
 import com.smartfactory.mes.simulation.persistence.mapper.AlarmHistoryMapper;
@@ -62,6 +63,11 @@ public class SimulationPersistenceService {
     }
 
     @Transactional
+    public void persistAlarms(List<AlarmHistory> alarms) {
+        alarms.forEach(alarmHistoryMapper::insert);
+    }
+
+    @Transactional
     public void persistTick(SimulationTickResult tickResult) {
         tickResult.equipmentUpdates().forEach(update ->
                 equipmentMapper.updateCurrentState(
@@ -82,7 +88,6 @@ public class SimulationPersistenceService {
 
         tickResult.productionRecords().forEach(productionRecordMapper::insert);
         closeAndOpenStatusHistories(tickResult);
-        tickResult.alarms().forEach(alarmHistoryMapper::insert);
     }
 
     @Transactional
