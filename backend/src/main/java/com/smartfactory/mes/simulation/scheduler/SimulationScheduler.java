@@ -39,6 +39,7 @@ public class SimulationScheduler {
             LocalDateTime tickTime = LocalDateTime.now().withNano(0);
             var tickResult = simulationEngine.advance(simulationStateStore.snapshot(), tickTime);
             simulationStateStore.replace(tickResult.nextStates());
+            simulationPersistenceService.persistAlarms(tickResult.alarms());
             simulationRealtimeSnapshotService.applyTick(tickResult);
             simulationWebSocketBroadcaster.broadcastCurrentState();
             simulationPersistenceService.persistTick(tickResult);

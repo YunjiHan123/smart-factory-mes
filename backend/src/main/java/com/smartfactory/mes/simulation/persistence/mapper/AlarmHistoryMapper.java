@@ -3,6 +3,7 @@ package com.smartfactory.mes.simulation.persistence.mapper;
 import com.smartfactory.mes.simulation.domain.AlarmHistory;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Delete;
@@ -21,6 +22,7 @@ public interface AlarmHistoryMapper {
                 #{acknowledged}, #{acknowledgedAt}, #{createdAt}
             )
             """)
+    @Options(useGeneratedKeys = true, keyProperty = "alarmId")
     void insert(AlarmHistory alarmHistory);
 
     @Select("""
